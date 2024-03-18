@@ -15,7 +15,7 @@ services:
     volumes:
       - ./src:/src:rw
       - ./.eslintrc.js:/.eslintrc.js:rw
-      - ./entrypoint.sh:/entrypoint.sh:rw
+      - ./entrypoint.sh:/entrypoint.sh:rwx
       - ./nest-cli.json:/nest-cli.json:rw
       - ./package.json:/package.json:rw
       - ./package-lock.json:/package-lock.json:rw
@@ -23,7 +23,7 @@ services:
       - ./env.example:/env.example:rw
       - ./tsconfig.json:/tsconfig.json:rw
       - ./tsconfig.build.json:/tsconfig.build.json:rw
-    entrypoint: /entrypoint.sh
+    entrypoint: [sh, /entrypoint.sh]
 
   db:
     restart: on-failure
